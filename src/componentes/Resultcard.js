@@ -1,15 +1,13 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 
 
-const ResultCard = () =>{
-    const [etanol, setEtanol] = useState('');
-  const [gasolina, setGasolina] = useState('');
+const ResultCard = ({etanol, gasolina}) =>{
   const [resultado, setResultado] = useState(0);
-  const [escolha, setEscolha] = useState('');
+  const [escolha, setEscolha] = useState(0);
  
   function calcularVantagem() {
-    if(gasolina>etanol){
+    if(etanol/gasolina < 0.7){
     const vantagem = (100*etanol) / gasolina;
     setResultado(vantagem);
     const esc = "ETANOL";
@@ -22,44 +20,30 @@ const ResultCard = () =>{
     }
   }
     return(
-        <TouchableOpacity>
-            <View>
-                <Text style={styles.texto}>Álcool ou Gasolina</Text>
-                      <Image 
-                        source={require('./assets/posto.png')}
-                        style={{ width: 200, height: 200}}
-                      />
-                      <TextInput
-                        style={styles.input}
-                        placeholder='Preço do Etanol (R$)'
-                        onChangeText={setEtanol}
-                        value={etanol}
-                        keyboardType='default'
-                       />
-                      <TextInput
-                        style={styles.input}
-                        placeholder='Preço da Gasolina (R$)'
-                        onChangeText={setGasolina}
-                        value={gasolina}
-                      />
-                      <Text style={styles.textoResultado}>Escolha {escolha}!</Text>
-                      <Text style={styles.textoResultado}>O etanol está custando {resultado}% do valor da gasolina</Text>
-                      <Button 
-                        color = {'#2E8B57'}
-                        title = 'VERIFICAR VANTAGEM'
-                        onPress={calcularVantagem}
-                      />
-            </View>
-        </TouchableOpacity>
+        
+    <View style={styles.container}>
+      
+    <Text style={styles.textoResultadoAlto}>Escolha {escolha}!</Text>
+      <Text style={styles.textoResultado}>O etanol está custando {resultado}% do valor da gasolina</Text>
+      <Button 
+        color = {'#2E8B57'}
+        title = 'VERIFICAR VANTAGEM'
+        onPress={calcularVantagem}
+      />
+    </View>
+        
     );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    borderRadius: 30,
     backgroundColor: '#54FF9F',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 20,
+    marginLeft: 15,
+    marginRight: 15,
   },
   texto: {
     fontSize: 24,
@@ -67,6 +51,11 @@ const styles = StyleSheet.create({
   },
   textoResultado: {
     fontSize: 15,
+    alignItems: 'center',
+    margin: 10
+  },
+  textoResultadoAlto: {
+    fontSize: 22,
     alignItems: 'center',
     margin: 10
   },
