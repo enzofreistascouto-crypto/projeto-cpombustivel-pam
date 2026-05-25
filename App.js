@@ -1,43 +1,14 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
+import ResultCard from './src/componentes/Resultcard.js';
  
 export default function App() {
-  const [etanol, setEtanol] = useState(0);
-  const [gasolina, setGasolina] = useState(0);
-  const [resultado, setResultado] = useState(0);
- 
-  function calcularVantagem() {
-    if(gasolina>etanol){
-    const vantagem = (100*etanol) / gasolina;
-    setResultado(vantagem);
-    }else{
-      const vantagem = (100*gasolina) / etanol;
-    setResultado(vantagem);
-    }
-  }
+
  
   return (
-    <View style={styles.container}>
-      <Text style={styles.texto}>Álcool ou Gasolina</Text>
-      <TextInput
-        style={styles.input}
-        placeholder='Preço do Etanol (R$)'
-        onChangeText={setEtanol}
-        value={etanol}
-        keyboardType='default'
-       />
-      <TextInput
-        style={styles.input}
-        placeholder='Preço da Gasolina (R$)'
-        onChangeText={setGasolina}
-        value={gasolina}
-      />
-      <Text style={styles.textoResultado}>O etanol está custando {resultado}% do valor da gasolina</Text>
-      <Button 
-        color = {'#2E8B57'}
-        title = 'VERIFICAR VANTAGEM'
-        onPress={calcularVantagem}
-      />
+    <View>
+      
+      <ResultCard/>
     </View>
   );
 }
