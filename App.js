@@ -11,7 +11,7 @@ export default function App() {
     <View style={styles.container}> //mostra: texto inicial, busca e mostra imagem, cria os inputs e mostra o resultCard;
       <Text style={styles.texto}>Álcool ou Gasolina</Text> 
          <Image borderRadius={20}
-          source={require('./assets/posto.png')}  //
+          source={require('./assets/posto.png')} 
          style={{ width: 200, height: 200}}
             />
           <TextInput
