@@ -1,17 +1,17 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
-import ResultCard from './src/componentes/Resultcard.js';
+import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native'; //importamos "ferramentas" do react native;
+import ResultCard from './src/componentes/Resultcard.js'; //importamos o resultCard .js de sua devida pasta;
  
 export default function App() {
-  const [etanol, setEtanol] = useState(0);
+  const [etanol, setEtanol] = useState(0); //"passa os valores" digitados de etanol e gasolina;
   const [gasolina, setGasolina] = useState(0);
 
  
   return (
-    <View style={styles.container}>
-      <Text style={styles.texto}>Álcool ou Gasolina</Text>
+    <View style={styles.container}> //mostra: texto inicial, busca e mostra imagem, cria os inputs e mostra o resultCard;
+      <Text style={styles.texto}>Álcool ou Gasolina</Text> 
          <Image borderRadius={20}
-          source={require('./assets/posto.png')}
+          source={require('./assets/posto.png')}  //
          style={{ width: 200, height: 200}}
             />
           <TextInput
@@ -32,7 +32,7 @@ export default function App() {
     </View>
   );
 }
- 
+ //define a estilização
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 30,
