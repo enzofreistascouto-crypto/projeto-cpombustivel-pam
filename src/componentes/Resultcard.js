@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Image, TouchableOpacity, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Image, TouchableOpacity } from 'react-native'; //importa "ferramentas" que iremos usar do react native; 
 
-
-const ResultCard = ({etanol, gasolina}) =>{
+//use o useSatate para "setar" resulatdo e gasolina, puxando etanol e gasolina como parâmetros;
+const ResultCard = ({etanol, gasolina}) =>{ 
   const [resultado, setResultado] = useState(0);
   const [escolha, setEscolha] = useState(0);
- 
+ //realiza os calculos para conferir a vatagem, coloca os resultados em variáveis;
   function calcularVantagem() {
     if(etanol/gasolina < 0.7){
     const vantagem = (100*etanol) / gasolina;
@@ -22,7 +22,7 @@ const ResultCard = ({etanol, gasolina}) =>{
     return(
         
     <View style={styles.container}>
-      
+  //exibe os resultados no resultCard;
     <Text style={styles.textoResultadoAlto}>Escolha {escolha}!</Text>
       <Text style={styles.textoResultado}>O etanol está custando {resultado}% do valor da gasolina</Text>
       <Button 
@@ -34,7 +34,7 @@ const ResultCard = ({etanol, gasolina}) =>{
         
     );
 };
-
+//estilização
 const styles = StyleSheet.create({
   container: {
     borderRadius: 30,
