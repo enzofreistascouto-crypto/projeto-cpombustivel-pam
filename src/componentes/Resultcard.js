@@ -70,4 +70,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ResultCard;
+export default ResultCard; //expota o ResultCard, para poder ser chamado em outros arquivos;
